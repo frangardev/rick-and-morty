@@ -1,6 +1,10 @@
 import React from 'react' //rfce
 import styles from './Header.module.css'
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons'
+
+
 function Header({darkMode, setDarkMode}) {
   return (
     <header className={`${styles.Header} ${darkMode && styles.dark}`}>
@@ -11,8 +15,8 @@ function Header({darkMode, setDarkMode}) {
             onClick={()=> setDarkMode(!darkMode) }
         >
             {!darkMode ? 'Dark Mode' : 'Light Mode'}
+            <FontAwesomeIcon icon={!darkMode ? faMoon : faSun} className={styles.icon}/>
         </button>
-        <br />
     </header>
   )
 }

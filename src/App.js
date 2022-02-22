@@ -6,7 +6,7 @@ import { Character } from './components/Character';
 const isDarkUser = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
 
 function App() {  
-  const [darkMode, setDarkMode] = React.useState(isDarkUser)
+  const [darkMode, setDarkMode] = React.useState(false)
 
   React.useEffect(()=>{
     const body = document.querySelector('body')

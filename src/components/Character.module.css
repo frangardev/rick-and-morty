@@ -2,14 +2,16 @@
     display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(9em, 1fr));
 	grid-gap: 1em;
-    justify-content: center space-evenly;
+    justify-content: center;
     width: 90%;
     max-width: 1500px;
-    margin: 0 auto 40px;
+    margin: 0 auto;
+    padding: 0;
 }
 .CharacterItem{
     width: 100%;
     height: auto;
+    margin: 0;
     overflow: hidden;
     background-color: white;
     border-radius: 15px;
@@ -22,17 +24,32 @@
     margin: 0;
     padding: 0;
 }
+.imageContainer{
+    position: relative;
+    overflow: hidden;
+}
 .imageCharacter{
     width: 100%;
 }
 .nameCharacter{
-    color: rgb(0, 176, 200);
     margin: 10px;
+    font-size: 1.5rem;
+    color: rgb(0, 176, 200);
 }
 .dataCharacterContainer{
-    list-style: none;
+    position: absolute;
+    bottom: -10px;
+    width: 100%;
     text-align: start;
-    padding: 0 20px;
+    font-size: .8rem;
+    list-style: none;
+    color: white;
+    background-color: black;
+    opacity: .7;
+    z-index: -10;
+}
+.dataCharacterHover{
+    z-index: 10;
 }
 .dataSpan{
     color: rgb(105, 200, 42)
@@ -45,7 +62,7 @@
     color: rgb(89, 155, 163);
 }
 .dark .dataSpan{
-    color: rgb(156, 192, 133)
+    color: rgb(121, 163, 95)
 }
 
 @media (min-width: 1000px) {
