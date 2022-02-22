@@ -1,0 +1,55 @@
+.Characters{
+    display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(9em, 1fr));
+	grid-gap: 1em;
+    justify-content: center space-evenly;
+    width: 90%;
+    max-width: 1500px;
+    margin: 0 auto 40px;
+}
+.CharacterItem{
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    background-color: white;
+    border-radius: 15px;
+}
+.CharacterItem:hover{
+    box-shadow: 0px 3px 10px -4px rgba(23, 26, 22, 0.41);
+}
+.CharacterItem figure{
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+.imageCharacter{
+    width: 100%;
+}
+.nameCharacter{
+    color: rgb(0, 176, 200);
+    margin: 10px;
+}
+.dataCharacterContainer{
+    list-style: none;
+    text-align: start;
+    padding: 0 20px;
+}
+.dataSpan{
+    color: rgb(105, 200, 42)
+}
+
+.dark .CharacterItem{
+    background-color: #303236c2;
+}
+.dark .nameCharacter{
+    color: rgb(89, 155, 163);
+}
+.dark .dataSpan{
+    color: rgb(156, 192, 133)
+}
+
+@media (min-width: 1000px) {
+    .Characters{
+        grid-template-columns: repeat(auto-fill, minmax(13em, 1fr));
+    }
+}

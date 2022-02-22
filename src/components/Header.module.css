@@ -1,0 +1,28 @@
+.Header{
+    /* width: 100%; */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 60px;
+}
+
+.darkModeButton{
+    background-color: black;
+    color: white;
+    border: transparent;
+    padding: 5px 10px;
+}
+.dark .darkModeButton{
+    background-color: white;
+    color: black;
+}
+
+.darkModeButton:hover{
+    background-color: white;
+    color: black;
+    cursor: pointer;
+}
+.dark .darkModeButton:hover{
+    background-color: black;
+    color: white;
+}

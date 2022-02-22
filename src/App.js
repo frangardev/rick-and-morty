@@ -1,14 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
 import { Header } from './components/Header';
 import { Character } from './components/Character';
 
-function App() {
+//Con esto sabemos si el usuario usa darkMode o lighMode
+const isDarkUser = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+
+function App() {  
+  const [darkMode, setDarkMode] = React.useState(isDarkUser)
+
+  React.useEffect(()=>{
+    const body = document.querySelector('body')
+    
+    body.className = darkMode ? 'dark' : ''
+  },[darkMode])
+
   return (
-    <div className="App">
-      <Header />
-      <Character />
-    </div>
+    <React.Fragment>
+      <Header 
+        darkMode={darkMode}
+        setDarkMode={setDarkMode}
+      />
+      <Character 
+        isDark = {darkMode}
+      />
+    </React.Fragment>
   );
 }
 
