@@ -4,7 +4,7 @@ import styles from './Character.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart } from '@fortawesome/free-solid-svg-icons'
 
-function CharacterItem({ character, addFavorite }) {
+function CharacterItem({ character, onFavorite }) {
     const [hover, setHover] = React.useState(false)
     
     return (
@@ -46,7 +46,7 @@ function CharacterItem({ character, addFavorite }) {
             <figcaption>
                 <h2 className={styles.nameCharacter}>{character.name}</h2>
                 <button
-                    onClick={()=> addFavorite(character)}
+                    onClick={()=> onFavorite(character)}
                 >
                     <FontAwesomeIcon icon={ faHeart }/>
                 </button>
