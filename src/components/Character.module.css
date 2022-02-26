@@ -8,7 +8,11 @@
     margin: 0 auto;
     padding: 0;
 }
+.title{
+    margin-left: 5%;
+}
 .CharacterItem{
+    position: relative;
     width: 100%;
     height: auto;
     margin: 0;
@@ -64,6 +68,18 @@
 }
 .dark .dataSpan{
     color: rgb(121, 163, 95)
+}
+
+.favoriteButton{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: transparent;
+    border: 0px transparent;
+    cursor: pointer;
+}
+.heartIcon{
+    color: rgb(157, 165, 162);
 }
 
 @media (min-width: 1000px) {

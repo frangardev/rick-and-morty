@@ -1,12 +1,13 @@
 import React from 'react'
 import styles from './Character.module.css'
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHeart } from '@fortawesome/free-solid-svg-icons'
+import { FaHeart, FaRegHeart } from "react-icons/fa";
 
 function CharacterItem({ character, onFavorite }) {
     const [hover, setHover] = React.useState(false)
-    
+    const [favorite, setFavorite] = React.useState(false)
+
+
     return (
         <figure 
             className={styles.CharacterItem}
@@ -46,9 +47,13 @@ function CharacterItem({ character, onFavorite }) {
             <figcaption>
                 <h2 className={styles.nameCharacter}>{character.name}</h2>
                 <button
-                    onClick={()=> onFavorite(character)}
+                    className={styles.favoriteButton}
+                    onClick={()=>{ 
+                        onFavorite(character)
+                        setFavorite(!favorite)
+                    }}
                 >
-                    <FontAwesomeIcon icon={ faHeart }/>
+                    {favorite ? (<FaHeart /> ) : (<FaRegHeart /> )}
                 </button>
             </figcaption>
         </figure>

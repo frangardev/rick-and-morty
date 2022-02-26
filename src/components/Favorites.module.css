@@ -1,0 +1,23 @@
+.FavoriteCharacters{
+    width: 90%;
+    margin: 0 auto;
+}
+.FavoriteCharactersContainer{
+    display: flex;
+    gap: 1em;
+    width: 105%;
+    overflow-x: scroll;  
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x proximity; 
+}
+.itemContainer{
+    scroll-snap-align: center;
+    text-align: center;
+}
+.image{
+    width: 3rem;
+    border-radius: 15px;
+}
+.name{
+    font-size: .7rem;
+}

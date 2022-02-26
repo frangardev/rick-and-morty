@@ -1,9 +1,7 @@
 import React from 'react' //rfce
 import styles from './Header.module.css'
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons'
-
+import { FaRegSun, FaRegMoon } from "react-icons/fa";
 
 function Header({children, darkMode, setDarkMode}) {
   return (
@@ -14,8 +12,8 @@ function Header({children, darkMode, setDarkMode}) {
             className={styles.darkModeButton}
             onClick={()=> setDarkMode(!darkMode) }
         >
-            {!darkMode ? 'Dark Mode' : 'Light Mode'}
-            <FontAwesomeIcon icon={!darkMode ? faMoon : faSun} className={styles.icon}/>
+            {!darkMode ? 'Dark Mode' : 'Light Mode' }
+            {!darkMode ? (<FaRegMoon className={styles.icon}  />) : (<FaRegSun className={styles.icon} />)}
         </button>
         
         {children}
@@ -25,4 +23,3 @@ function Header({children, darkMode, setDarkMode}) {
 }
 
 export { Header }
-

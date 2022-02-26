@@ -3,6 +3,8 @@ import { Header } from './components/Header';
 import { Character } from './components/Character';
 import { CharacterItem } from './components/CharacterItem';
 import { SearchCharacter } from './components/SearchCharacter';
+import { Favorites } from './components/Favorites';
+import { FavoeitesContainer } from './components/FavoeitesContainer';
 
 function App() {  
   const [state, dispach] = React.useReducer(favoriteReducer, initialState)
@@ -53,29 +55,34 @@ function App() {
         />
       </Header>
 
-      {state.myFavorites.map(favorite => (
-          <li key={favorite.id}>
-          {favorite.name}
-          </li>
-      ))}
-
-   
-
-      <Character isDark = {state.darkMode}>
-        {filteredUsers.map(character => (
-          <CharacterItem
-            key={character.id}
-            character = {character}
-            onFavorite = {onFavorite}
-          />
-        ))}
-      </Character>
+      <main>
+        {(state.myFavorites.length > 0) &&(
+          <FavoeitesContainer>
+            {state.myFavorites.map(favorite => (
+                <Favorites
+                  key={favorite.id}
+                  image={favorite.image}
+                  name={favorite.name}
+                />
+            ))}
+          </FavoeitesContainer>
+        )}
+        
+        <Character isDark = {state.darkMode}>
+          {filteredUsers.map(character => (
+            <CharacterItem
+              key={character.id}
+              character = {character}
+              onFavorite = {onFavorite}
+            />
+          ))}
+        </Character>
+      </main>
     </React.Fragment>
   );
 }
 
 // -----------------------------------------------------------
-//Con esto sabemos si el usuario usa darkMode o lighMode
 const isDarkUser = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
 const initialState = {
   characters: [],
