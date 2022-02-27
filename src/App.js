@@ -1,4 +1,6 @@
 import React from 'react';
+import { useLocalStorage } from './Hooks/useLocalStorage'
+
 import { Header } from './components/Header';
 import { Character } from './components/Character';
 import { CharacterItem } from './components/CharacterItem';
@@ -7,6 +9,7 @@ import { Favorites } from './components/Favorites';
 import { FavoeitesContainer } from './components/FavoeitesContainer';
 
 function App() {  
+  const [favorites, setFavorites] = useLocalStorage('FAVORITES_V1', [])
   const [state, dispach] = React.useReducer(favoriteReducer, initialState)
     
   React.useEffect(()=>{
@@ -26,20 +29,20 @@ function App() {
     }),
     [state.characters, state.search]
   )
-  
+
   const onFavorite = (favorite) => { 
-      const newFavorites = [...state.myFavorites]
-      const isNewFavorite = newFavorites.some(item => item.id === favorite.id)
+    const newFavorites = [...favorites]
+    const isNewFavorite = newFavorites.some(item => item.id === favorite.id)
 
-      if(!isNewFavorite || newFavorites.length === 0) {
-          newFavorites.push(favorite)
-      }else{
-          const value = newFavorites.findIndex(item => item === favorite)
-          newFavorites.splice(value, 1)
-      } 
+    if(!isNewFavorite || newFavorites.length === 0) {
+        newFavorites.push(favorite)
+    }else{
+        const value = newFavorites.findIndex(item => item.id === favorite.id)
+        newFavorites.splice(value, 1)
+    } 
 
-      dispach({ type: 'NEW_FAVORITE', payload: newFavorites })
-  }
+    setFavorites(newFavorites)
+}
   const onSearchCharacter = (value)=> dispach({ type: 'SEARCH_CHARACTER', payload: value })
   const onDarkMode = () => dispach({ type: 'DARK_MODE' })
 
@@ -57,9 +60,9 @@ function App() {
       </Header>
 
       <main>
-        {(state.myFavorites.length > 0) &&(
+        {(favorites.length > 0) &&(
           <FavoeitesContainer>
-            {state.myFavorites.map(favorite => (
+            {favorites.map(favorite => (
                 <Favorites
                   key={favorite.id}
                   image={favorite.image}
@@ -74,7 +77,7 @@ function App() {
             <CharacterItem
               key={character.id}
               character = {character}
-              favorites={state.myFavorites}
+              favorites={favorites}
               onFavorite = {onFavorite}
             />
           ))}
@@ -88,17 +91,11 @@ function App() {
 const isDarkUser = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
 const initialState = {
   characters: [],
-  myFavorites: [],
   search: '',
   darkMode: isDarkUser || false,
 }
 const favoriteReducer=(state, action)=>{
   switch (action.type){
-    case 'NEW_FAVORITE':
-        return{
-            ...state,
-            myFavorites: action.payload
-        }
     case 'CHARACTERS':
         return{
             ...state,
@@ -118,5 +115,4 @@ const favoriteReducer=(state, action)=>{
         return { ...state }
   }
 }
-
 export default App;
