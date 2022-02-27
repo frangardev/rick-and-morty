@@ -52,6 +52,7 @@ function App() {
          <SearchCharacter 
           search={state.search}
           setSearch={onSearchCharacter}
+          darkMode={state.darkMode}
         />
       </Header>
 

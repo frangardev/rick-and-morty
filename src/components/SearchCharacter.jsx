@@ -3,9 +3,9 @@ import styles from './Seach.module.css'
 
 import { FaSearch } from "react-icons/fa";
 
-function SearchCharacter({search, setSearch}) {
+function SearchCharacter({search, setSearch, darkMode}) {
   return (
-      <div className={styles.searchContainer}>
+      <div className={`${styles.searchContainer} ${darkMode && styles.dark}`}>
       <input 
           className={styles.searchInput}
           type="text" 
