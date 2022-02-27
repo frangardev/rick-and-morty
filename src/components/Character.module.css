@@ -10,6 +10,7 @@
 }
 .title{
     margin-left: 5%;
+    font-size: 2rem;
 }
 .CharacterItem{
     position: relative;
@@ -74,12 +75,24 @@
     position: absolute;
     top: 5px;
     right: 5px;
-    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5em;
+    height: 2.5em;
+    border-radius: 50%;
+    background-color: rgba(212, 208, 208, 0.034);
     border: 0px transparent;
     cursor: pointer;
 }
-.heartIcon{
-    color: rgb(157, 165, 162);
+.favoriteButton:hover{
+    background-color: rgba(133, 42, 72, 0.479);
+    color: rgb(158, 29, 50);
+}
+.favoriteIcon{
+    width: 1.5em;
+    height: 1.5em;
+    color: rgb(158, 29, 50);
 }
 
 @media (min-width: 1000px) {

@@ -1,0 +1,18 @@
+.searchContainer{
+    position: relative;
+}
+.searchInput{
+    border-radius: 15px;
+    border: 1px solid rgba(0, 0, 0, 0.4);
+    text-indent: 1.2rem;
+    padding: 5px 10px;
+}
+.searchIcon{
+    position: absolute;
+    top: 7px;
+    left: 10px;
+    width: .8em;
+    height: .8em;
+    color: black;
+    opacity: .4;
+}

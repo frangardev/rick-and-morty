@@ -1,12 +1,13 @@
 import React from 'react'
+import styles from './Seach.module.css'
 
 import { FaSearch } from "react-icons/fa";
 
 function SearchCharacter({search, setSearch}) {
   return (
-      <div>
-
+      <div className={styles.searchContainer}>
       <input 
+          className={styles.searchInput}
           type="text" 
           placeholder="Character"
           value={search} 
@@ -14,7 +15,7 @@ function SearchCharacter({search, setSearch}) {
               setSearch(e.target.value)
           }}
         />
-        <FaSearch />
+        <FaSearch className={styles.searchIcon}/>
     </div>
   )
 }

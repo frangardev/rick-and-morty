@@ -3,10 +3,10 @@ import styles from './Character.module.css'
 
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 
-function CharacterItem({ character, onFavorite }) {
+function CharacterItem({ character, onFavorite, favorites }) {
     const [hover, setHover] = React.useState(false)
-    const [favorite, setFavorite] = React.useState(false)
-
+    
+    const isFavorite = favorites.some(item => item.id === character.id) 
 
     return (
         <figure 
@@ -50,10 +50,12 @@ function CharacterItem({ character, onFavorite }) {
                     className={styles.favoriteButton}
                     onClick={()=>{ 
                         onFavorite(character)
-                        setFavorite(!favorite)
                     }}
                 >
-                    {favorite ? (<FaHeart /> ) : (<FaRegHeart /> )}
+                    {isFavorite 
+                        ? (<FaHeart className={styles.favoriteIcon}/> ) 
+                        : (<FaRegHeart className={styles.favoriteIcon}/> )
+                    }
                 </button>
             </figcaption>
         </figure>

@@ -73,6 +73,7 @@ function App() {
             <CharacterItem
               key={character.id}
               character = {character}
+              favorites={state.myFavorites}
               onFavorite = {onFavorite}
             />
           ))}
