@@ -3,6 +3,7 @@
 }
 .FavoriteCharacters{
     width: 90%;
+    max-width: 1500px;
     margin: 0 auto;
 }
 .FavoriteCharactersContainer{
