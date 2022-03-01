@@ -1,5 +1,6 @@
 import React from 'react';
-import { useLocalStorage } from './Hooks/useLocalStorage'
+
+import { useLocalStorage } from './hooks/useLocalStorage'
 
 import { Header } from './components/Header';
 import { Character } from './components/Character';
@@ -11,13 +12,13 @@ import { FavoeitesContainer } from './components/FavoeitesContainer';
 function App() {  
   const [favorites, setFavorites] = useLocalStorage('FAVORITES_V1', [])
   const [state, dispach] = React.useReducer(favoriteReducer, initialState)
-    
-  React.useEffect(()=>{
-      fetch('https://rickandmortyapi.com/api/character/')
-      .then(response => response.json())
-      .then(data => dispach({ type: 'CHARACTERS', payload: data.results }))
-  },[])
 
+  React.useEffect(()=>{
+    fetch('https://rickandmortyapi.com/api/character/')
+    .then(response => response.json())
+    .then(data => dispach({ type: 'CHARACTERS', payload: data.results }))
+  },[])
+    
   React.useEffect(()=>{
     const body = document.querySelector('body') 
     body.className = state.darkMode ? 'dark' : ''
