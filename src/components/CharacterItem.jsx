@@ -1,7 +1,11 @@
 import React from 'react'
 import styles from './Character.module.css'
 
-import { FaHeart, FaRegHeart } from "react-icons/fa";
+import { LazyLoadImage } from 'react-lazy-load-image-component'
+import 'react-lazy-load-image-component/src/effects/blur.css';
+
+import { FaHeart, FaRegHeart } from "react-icons/fa"
+import { Placeholder } from './Placeholder';
 
 function CharacterItem({ character, onFavorite, favorites }) {
     const [hover, setHover] = React.useState(false)
@@ -16,11 +20,13 @@ function CharacterItem({ character, onFavorite, favorites }) {
             key={character.id}
         >
             <div className={styles.imageContainer}>
-                <img 
+                <LazyLoadImage 
                     className={styles.imageCharacter} 
                     src={character.image} 
                     alt={character.name} 
-                    loading='lazy'
+                    width='100%'
+                    height='100%'
+                    effect='blur'
                 />
 
                <ul 

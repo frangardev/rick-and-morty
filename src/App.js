@@ -8,15 +8,21 @@ import { CharacterItem } from './components/CharacterItem';
 import { SearchCharacter } from './components/SearchCharacter';
 import { Favorites } from './components/Favorites';
 import { FavoeitesContainer } from './components/FavoeitesContainer';
+import { Placeholder } from './components/Placeholder';
 
 function App() {  
   const [favorites, setFavorites] = useLocalStorage('FAVORITES_V1', [])
   const [state, dispach] = React.useReducer(favoriteReducer, initialState)
+  const [loading, setLoading] = React.useState(false)
 
   React.useEffect(()=>{
+    setLoading(true)
     fetch('https://rickandmortyapi.com/api/character/')
     .then(response => response.json())
-    .then(data => dispach({ type: 'CHARACTERS', payload: data.results }))
+    .then(data => {
+      dispach({ type: 'CHARACTERS', payload: data.results })
+      setLoading(false)
+    })
   },[])
     
   React.useEffect(()=>{
@@ -64,23 +70,27 @@ function App() {
         {(favorites.length > 0) &&(
           <FavoeitesContainer>
             {favorites.map(favorite => (
-                <Favorites
-                  key={favorite.id}
-                  image={favorite.image}
-                  name={favorite.name}
-                />
+              <Favorites
+                key={favorite.id}
+                image={favorite.image}
+                name={favorite.name}
+              />
             ))}
           </FavoeitesContainer>
         )}
         
         <Character isDark = {state.darkMode}>
-          {filteredUsers.map(character => (
-            <CharacterItem
-              key={character.id}
-              character = {character}
-              favorites={favorites}
-              onFavorite = {onFavorite}
-            />
+          {
+              loading
+                ? <Placeholder/>
+            
+                : filteredUsers.map(character => (
+                  <CharacterItem
+                    key={character.id}
+                    character = {character}
+                    favorites={favorites}
+                    onFavorite = {onFavorite}
+                  />
           ))}
         </Character>
       </main>
