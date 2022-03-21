@@ -5,7 +5,6 @@ import { LazyLoadImage } from 'react-lazy-load-image-component'
 import 'react-lazy-load-image-component/src/effects/blur.css';
 
 import { FaHeart, FaRegHeart } from "react-icons/fa"
-import { Placeholder } from './Placeholder';
 
 function CharacterItem({ character, onFavorite, favorites }) {
     const [hover, setHover] = React.useState(false)
@@ -25,7 +24,7 @@ function CharacterItem({ character, onFavorite, favorites }) {
                     src={character.image} 
                     alt={character.name} 
                     width='100%'
-                    height='100%'
+                    min-height='144'
                     effect='blur'
                 />
 
