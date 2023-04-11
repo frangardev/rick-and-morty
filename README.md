@@ -1,4 +1,16 @@
-# Getting Started with Create React App
+# Rick and Morty
+
+Sitio que hace una conexión a la API de Rick and Morty y muestra la información traída de la API a través de componentes de React estilizados con CSS modules
+
+- El sitio te permite marcar tus personajes favoritos y estos los guarda en local storage gracias a un custom hook
+- Cuenta con Dark Mode que se activa automáticamente después de revisar si tu dispositivo utiliza Dark Mode. También permite cambiar entre Light Mode y Dark Mode con un botón
+
+
+#### Puede ver el proyecto [aquí](https://frangardev.github.io/rick-and-morty/ "aquí")
+
+------------
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
